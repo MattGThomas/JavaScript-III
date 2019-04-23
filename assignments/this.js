@@ -5,7 +5,7 @@
 * 2. Implicit binding happens when, dot notation is used to invoke a function, the left of the dot becomes the context for 
 'this'
 * 3. The 'new' keyword allows you to quickly create a new object using preset constraints
-* 4. 
+* 4. Explicit binding occurs when you clearly state what 'this' will be referring to , happens when .call() , .bind() , .apply() are used on a function
 *
 * write out a code example of each explanation above
 */
@@ -40,8 +40,18 @@ function Characters(name) {
     }
 }
 const emiya = new Characters('Emiya');
-emiya.speak();
 
 // Principle 4
 
 // code example for Explicit Binding
+const saber = {
+    name: 'Arturia Pendragon',
+    weapon: 'Excalibur',
+    age: 18,
+    master: 'Emiya',
+    class: 'Saber Class'
+}
+const classes = ['archer', 'caster', 'rider']
+function greeting(classes1, classes2, classes3) {
+    return `I am ${this.name} from the ${this.class} we will need to defeat the servants of the ${classes1}, ${classes2}, and ${classes3} classes to win the war.`
+}
