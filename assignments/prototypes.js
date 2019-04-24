@@ -58,6 +58,21 @@ CharacterStats.prototype.takeDamage = function() {
  Humanoid.prototype.greet = function() {
    return `${this.name} offers a greeting in ${this.language}`
  }
+
+ function Villain (villainAttribute) {
+   Humanoid.call(this, villainAttribute);
+   this.breatheDragonFire = function() {
+     return `${this.name} dealt damage`
+   }
+ }
+
+ function Hero (heroAttribute) {
+   Humanoid.call(this, heroAttribute);
+   this.getInTheRobot = function() {
+     return `${this.name} dealt damage`
+   }
+ }
+ 
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -117,6 +132,39 @@ CharacterStats.prototype.takeDamage = function() {
     language: 'Elvish',
   });
 
+  const shinji = new Hero({
+    createdAt: new Date(),
+    dimension: {
+      length: 5,
+      width: 3,
+      height: 2,
+    },
+    healthPoints: 60,
+    name: 'Shinji',
+    team: 'Nerv',
+    weapons: [
+      'Eva Unit 01'
+    ],
+    language: 'Japanese'
+  });
+
+  const titanSlayer = new Villain({
+    createdAt: new Date(),
+    dimension: {
+      length: 3,
+      width: 1,
+      height: .5
+    },
+    healthPoints: 30,
+    name: 'Armin Artlett',
+    team: 'The Scouts',
+    weapons: [
+      'titan transformation',
+      'ODM gear'
+    ],
+    language: 'Nerd-Speak'
+  })
+
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
@@ -127,6 +175,8 @@ CharacterStats.prototype.takeDamage = function() {
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+  console.log(titanSlayer.breatheDragonFire());
+  console.log(shinji.getInTheRobot());
 
 
   // Stretch task: 
